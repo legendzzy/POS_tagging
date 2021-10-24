@@ -48,7 +48,9 @@ with open('yelp_academic_dataset_review.json', encoding='utf-8') as f:
     for line in f:
         line_contents = json.loads(line)
         if line_count in random_list:
-            reviews.append(line_contents['text'])
+            sentences = nltk.sent_tokenize(line_contents['text'])
+            sentence = sentences[0]
+            reviews.append(sentence)
             #print(line_count)
             if line_count == random_list[COUNT - 1]:
                 break
